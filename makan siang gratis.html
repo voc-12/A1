@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Program Sprei Gratis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            height: 300px;
+        }
+        h1 {
+            font-size: 1.5em;
+            color: #333;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            position: absolute;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #btnYa {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+        }
+        #btnTidak {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apakah Anda puas dengan program sprei gratisnya?</h1>
+        <button id="btnYa" onclick="handleAnswer('ya')">Ya</button>
+        <button id="btnTidak" onmouseover="moveButton()">Tidak</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function handleAnswer(answer) {
+            const messageElement = document.getElementById('message');
+            if (answer === 'ya') {
+                messageElement.textContent = "Terima kasih! Anda merasa puas dengan program sprei gratisnya.";
+                messageElement.style.color = "green";
+            }
+        }
+
+        function moveButton() {
+            const button = document.getElementById('btnTidak');
+            const container = document.querySelector('.container');
+            
+            // Dapatkan ukuran kontainer
+            const containerRect = container.getBoundingClientRect();
+
+            // Generate posisi acak
+            const newLeft = Math.random() * (containerRect.width - button.offsetWidth);
+            const newTop = Math.random() * (containerRect.height - button.offsetHeight);
+
+            // Set posisi baru untuk tombol "Tidak"
+            button.style.left = `${newLeft}px`;
+            button.style.top = `${newTop}px`;
+        }
+    </script>
+</body>
+</html>
